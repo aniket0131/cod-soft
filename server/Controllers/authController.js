@@ -58,6 +58,7 @@ exports.login = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
+    console.log("User found:", user);  // Debug logging
 
     if (!user) {
       return res.status(401).json({
@@ -66,17 +67,16 @@ exports.login = async (req, res) => {
       });
     }
 
-    if (await bcrypt.compare(password, user.password)) {
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    console.log("Password match:", isPasswordCorrect);  // Debug logging
+
+    if (isPasswordCorrect) {
       const token = jwt.sign(
         { email: user.email, role: user.role, id: user._id },
         process.env.JWT_SECRET,
-        {
-          expiresIn: "24h",
-        }
+        { expiresIn: "24h" }
       );
-
-      user.token = token;
-      user.password = undefined;
+      console.log("Generated token:", token);  // Debug logging
 
       const options = {
         expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
@@ -96,7 +96,7 @@ exports.login = async (req, res) => {
       });
     }
   } catch (error) {
-    console.error(error);
+    console.error("Login Error:", error);  // Debug logging
     return res.status(500).json({
       success: false,
       message: "Login failure, please try again",

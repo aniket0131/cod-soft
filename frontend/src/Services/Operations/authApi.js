@@ -76,38 +76,34 @@ export function signUp(name, email, password, role, navigate) {
 
 
 //sign in
-export function signIn(email,password,navigate) {
-  return async(dispatch) => {
+export function signIn(email, password, navigate) {
+  return async (dispatch) => {
     const SIGNIN_API = "http://localhost:4000/api/login";
-    try{                                                                   
-      const response = await apiconnector("POST", SIGNIN_API, 
-      {
-       email,password
-      });
+    try {
+      console.log("Sending data to API:", { email, password });  // Debug logging
+      const response = await apiconnector("POST", SIGNIN_API, { email, password });
 
-      console.log(response, "response sign innnnnnnnnn");
+      console.log("API response:", response);  // Debug logging
 
-      if (!response.data.success) {                              
+      if (!response.data.success) {
         throw new Error(response.data.message);
       }
-      toast.success("login Successful");
+      toast.success("Login Successful");
       dispatch(setToken(response.data.token));
-      dispatch(setUser(response.data.name));
-      console.log("here");
+      dispatch(setUser(response.data.user.name));
       dispatch(setUserRole(response.data.user.role));
-      
+
       localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("user", JSON.stringify(response.data.user.name));
       localStorage.setItem("userRole", JSON.stringify(response.data.user.role));
-      
-      if(response.data.user.role === "employer"){
+
+      if (response.data.user.role === "employer") {
         navigate("/employer-dashboard");
-      }
-      else{
+      } else {
         navigate("/candidate-dashboard");
       }
-    }catch(err){
-      console.log(err, "error");
+    } catch (err) {
+      console.log("Login Error:", err);  // Debug logging
     }
-  }
-}  
+  };
+}

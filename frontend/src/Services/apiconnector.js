@@ -5,7 +5,7 @@ export const axiosInstance = axios.create({
 });
 
 export const apiconnector = (method, url, bodyData, headers, params) => {
-  console.log("API Connector Call:", method, url, bodyData, headers, params); // Debug logging
+  console.log("API Connector Call:", method, url, bodyData, headers, params);  // Debug logging
   return axiosInstance({
     method: method,
     url: url,
@@ -14,11 +14,11 @@ export const apiconnector = (method, url, bodyData, headers, params) => {
     params: params ? params : null,
   })
   .then(response => {
-    console.log("API Connector Response:", response); // Debug logging
+    console.log("API Connector Response:", response);  // Debug logging
     return response;
   })
   .catch(error => {
-    console.error("API Connector Error:", error); // Debug logging
+    console.error("API Connector Error:", error);  // Debug logging
     throw error;
   });
 };
