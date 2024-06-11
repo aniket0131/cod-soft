@@ -41,7 +41,7 @@ import { apiconnector } from "../apiconnector";
 import { setLoading, setToken } from "../../Slices/authSlice";
 import { setUser, setUserRole } from "../../Slices/profileSlice";
 
-const SIGNUP_API = "http://localhost:4000/api/register";
+const SIGNUP_API = `http://localhost:4000/api/register`;
 console.log(SIGNUP_API, "API URL");
 
 export function signUp(name, email, password, role, navigate) {
@@ -78,7 +78,7 @@ export function signUp(name, email, password, role, navigate) {
 //sign in
 export function signIn(email, password, navigate) {
   return async (dispatch) => {
-    const SIGNIN_API = "http://localhost:4000/api/login";
+    const SIGNIN_API = `http://localhost:4000/api/login`;
     try {
       console.log("Sending data to API:", { email, password });  // Debug logging
       const response = await apiconnector("POST", SIGNIN_API, { email, password });

@@ -9,6 +9,7 @@ const createjob = require("./Routes/jobRoutes");
 const CandidateRoutes = require("./Routes/CandidateRoutes");
 const cookieParser = require('cookie-parser'); // Add this line
 
+
 dotenv.config();
 
 const app = express();
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
         message: "Server is running....."
     });
 });
+
 
 app.listen(PORT, () => {
     console.log(`App is running on port ${PORT}`);

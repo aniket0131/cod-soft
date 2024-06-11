@@ -7,7 +7,7 @@ import { setJobApplications } from "../../Slices/profileSlice"
 
 export function employerapi(title, description, company, location, salary) {
     return async (dispatch) => {
-        const EMPLOYERPOST_API = "http://localhost:4000/api/createjobpost";
+        const EMPLOYERPOST_API = `http://localhost:4000/api/createjobpost`;
         try{
             const response = await apiconnector("POST", EMPLOYERPOST_API,{
                 title, description, company, location, salary
@@ -30,7 +30,7 @@ export function employerapi(title, description, company, location, salary) {
 
 export function jobfetched() {
     return async (dispatch) => {
-        const EMPLOYERGET_API = "http://localhost:4000/api/getJobsByUser";
+        const EMPLOYERGET_API = `http://localhost:4000/api/getJobsByUser`;
         try {
             const response = await apiconnector("GET", EMPLOYERGET_API, null);
 
@@ -94,7 +94,7 @@ function clearUserData() {
 
 export function getJobApplicationsForEmployer() {
     return async (dispatch, getState) => {
-        const EMPLOYER_JOB_APPLICATIONS_API = "http://localhost:4000/api/getJobApplicationsForEmployer";
+        const EMPLOYER_JOB_APPLICATIONS_API = `http://localhost:4000/api/getJobApplicationsForEmployer`;
         const token = getState().auth.token; // Assuming you store the token in auth slice
 
         try {
