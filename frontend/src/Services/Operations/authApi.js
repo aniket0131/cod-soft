@@ -41,7 +41,7 @@ import { apiconnector } from "../apiconnector";
 import { setLoading, setToken } from "../../Slices/authSlice";
 import { setUser, setUserRole } from "../../Slices/profileSlice";
 
-const SIGNUP_API = `https://jobportal-bed.vercel.app/`;
+const SIGNUP_API = `https://jobportal-bed.vercel.app/api/register`;
 console.log(SIGNUP_API, "API URL");
 
 export function signUp(name, email, password, role, navigate) {
