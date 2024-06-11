@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
+  baseURL: "https://jobportal-bed.vercel.app",
   withCredentials: true,
 });
 

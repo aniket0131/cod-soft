@@ -17,7 +17,6 @@ const PORT = 4000;
 
 const corsOptions = {
     origin: 'https://jobportallinked.vercel.app/',
-    origin: "http://localhost:3000",
     credentials: true,
   };
 // Init Middleware
@@ -25,6 +24,9 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
+
+
+app.options('*', cors(corsOptions));
 
 // Connect to the database
 database.connect();
