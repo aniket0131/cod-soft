@@ -16,7 +16,7 @@ const app = express();
 const PORT = 4000;
 
 const corsOptions = {
-    origin: 'https://jobportallinked.vercel.app/',
+    origin: 'https://jobportallinked.vercel.app',
     credentials: true,
   };
 // Init Middleware
