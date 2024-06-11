@@ -16,7 +16,7 @@ const app = express();
 const PORT = 4000;
 
 const corsOptions = {
-    origin: 'http://localhost:3000', // Allow requests from this origin
+    origin: 'https://jobportallinked.vercel.app/', // Allow requests from this origin
     credentials: true, // Allow cookies and other credentials
   };
 // Init Middleware
