@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const axiosInstance = axios.create({
   baseURL: "https://jobportal-bed.vercel.app/api",
-  withCredentials: true,
+  withCredentials: false,
 });
 
 export const apiconnector = (method, url, bodyData, headers, params) => {
