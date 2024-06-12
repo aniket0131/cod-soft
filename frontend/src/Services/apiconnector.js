@@ -13,6 +13,7 @@ export const apiconnector = (method, url, bodyData, headers, params) => {
     data: bodyData ? bodyData : null,
     headers: headers ? headers : {},
     params: params ? params : null,
+    withCredentials: false,
   })
   .then(response => {
     console.log("API Connector Response:", response);  // Debug logging
